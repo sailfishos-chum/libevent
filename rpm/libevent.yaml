@@ -4,18 +4,21 @@ Version: 2.1.12
 Group: Development/Libraries
 License: BSD-3-Clause
 Sources:
-    - '%{name}-%{version}-stable.tar.gz'
+    #- '%{name}-%{version}-stable.tar.gz'
+    - '%{name}-%{version}.tar.gz'
 URL: https://libevent.org
+SCM: https://github.com/libevent/libevent
 Description: |
     %{summary}.
 
     %if "%{?vendor}" == "chum"
-    PackagerName: nephros
     Categories:
      - Library
+    Custom:
+      PackagingRepo: https://github.com/sailfishos-chum/libevent
     %endif
 
-SetupOptions: '-q -n %{name}-%{version}-stable'
+SetupOptions: '-q -n %{name}-%{version}/upstream'
 ConfigOptions:
   - '--with-gnu-ld'
   - '--disable-libevent-regress'
@@ -23,8 +26,10 @@ ConfigOptions:
 
 #Requires:
 #    - ^^^
-#PkgBR:
-#    - ^^^
+PkgBR:
+    - autoconf
+    - automake
+    - libtool
 PkgConfigBR:
     - libssl
 

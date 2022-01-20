@@ -14,19 +14,23 @@ Release:    1
 Group:      Development/Libraries
 License:    BSD-3-Clause
 URL:        https://libevent.org
-Source0:    %{name}-%{version}-stable.tar.gz
+Source0:    %{name}-%{version}.tar.gz
 Source100:  libevent.yaml
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(libssl)
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 
 %description
 %{summary}.
 
 %if "%{?vendor}" == "chum"
-PackagerName: nephros
 Categories:
  - Library
+Custom:
+  PackagingRepo: https://github.com/sailfishos-chum/libevent
 %endif
 
 
@@ -39,13 +43,14 @@ Requires:   %{name} = %{version}-%{release}
 %{summary}.
 
 %prep
-%setup -q -n %{name}-%{version}-stable
+%setup -q -n %{name}-%{version}/upstream
 
 # >> setup
 # << setup
 
 %build
 # >> build pre
+./autogen.sh
 # << build pre
 
 %configure --disable-static \
