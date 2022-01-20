@@ -1,0 +1,46 @@
+Name: libevent
+Summary: Library to execute a function when a specific event occurs on a file descriptor
+Version: 2.1.12
+Group: Development/Libraries
+License: BSD-3-Clause
+Sources:
+    - '%{name}-%{version}-stable.tar.gz'
+URL: https://libevent.org
+Description: |
+    %{summary}.
+
+    %if "%{?vendor}" == "chum"
+    PackagerName: nephros
+    Categories:
+     - Library
+    %endif
+
+SetupOptions: '-q -n %{name}-%{version}-stable'
+ConfigOptions:
+  - '--with-gnu-ld'
+  - '--disable-libevent-regress'
+  - '--disable-doxygen-html'
+
+#Requires:
+#    - ^^^
+#PkgBR:
+#    - ^^^
+PkgConfigBR:
+    - libssl
+
+Files:
+  - '%{_bindir}/*'
+  - '%{_libdir}/*.so.*'
+SubPackages:
+#    - Name:  doc
+#      Summary: Documentation files for %{name}
+#      Group: Development/Libraries
+#      Files:
+#        - '%{_mandir}/*/*'
+    - Name:  devel
+      Summary: Developmemt files for %{name}
+      Group: Development/Libraries
+      Files:
+        - '%{_includedir}/*'
+        - '%{_libdir}/*.so'
+        - '%{_libdir}/pkgconfig/*'
