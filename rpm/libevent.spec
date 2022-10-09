@@ -35,7 +35,7 @@ Custom:
 
 
 %package devel
-Summary:    Developmemt files for %{name}
+Summary:    Development files for %{name}
 Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
 

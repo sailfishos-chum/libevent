@@ -1,6 +1,7 @@
 Name: libevent
 Summary: Library to execute a function when a specific event occurs on a file descriptor
 Version: 2.1.12
+Release: 1
 Group: Development/Libraries
 License: BSD-3-Clause
 Sources:
@@ -43,7 +44,7 @@ SubPackages:
 #      Files:
 #        - '%{_mandir}/*/*'
     - Name:  devel
-      Summary: Developmemt files for %{name}
+      Summary: Development files for %{name}
       Group: Development/Libraries
       Files:
         - '%{_includedir}/*'
